@@ -9,15 +9,17 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
+    
     public function up(): void
     {
-        Schema::create('user', function (Blueprint $table) {
+        Schema::create('logs', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
+            $table->foreignId('user_id')->constrained('user')->nullable();
+            $table->string('descriptions');
+            $table->string('http_code');
+            $table->string('action_status');
+            $table->boolean('bookmark');
+            $table->string('remark');
             $table->timestamps();
         });
     }
@@ -27,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('user');
+        Schema::dropIfExists('logs');
     }
 };
