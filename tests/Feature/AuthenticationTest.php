@@ -50,4 +50,28 @@ class AuthenticationTest extends TestCase
 
         $response->assertStatus(200);
     }
+
+    public function test_get_users(): void
+    {
+        $response1 = $this->post(
+            'api/login',
+            [
+                'email' => 'test@mail.com',
+                'password' => 'admin123!'
+            ]
+        );
+
+        $response2 = $this->withHeader('Authorization', 'Bearer '.$response1['token'])
+                    ->get(
+                        'api/users', 
+                        // [
+                        //     'name' => 'Test',
+                        //     'email' => fake()->unique()->safeEmail(),
+                        //     'password' => '12345678',
+                        //     'password_confirmation' => '12345678'
+                        // ]
+                    );
+
+        $response2->assertStatus(200);
+    }
 }

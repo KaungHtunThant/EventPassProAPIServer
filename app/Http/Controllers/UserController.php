@@ -11,8 +11,7 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
-    public function login(Request $request)
-    {
+    public function login(Request $request){
         $fields = $request->validate([
             'email' => 'required|string',
             'password' => 'required|string'
@@ -58,8 +57,7 @@ class UserController extends Controller
         return response($token, 200);
     }
 
-    public function store(Request $request)
-    {
+    public function store(Request $request){
         $validator = Validator::make($request->all(), [
             'name' => 'required|string',
             'email' => 'required|string|unique:user,email',
@@ -103,5 +101,40 @@ class UserController extends Controller
         ]);
 
         return response('User created', 201);
+    }
+
+    public function index(Request $request){
+
+        (!isset($request->paginate)) ? $request->paginate = 10 : false;
+        (!isset($request->orderBy)) ? $request->orderBy = 'name' : false;
+        (!isset($request->page)) ? $request->page = '1' : false;
+
+        $users = User::orderBy($request->orderBy)
+                ->when(request('searchValue', false), function($query, $searchValue){
+                    return $query->where('name', 'LIKE', '%'.$searchValue.'%')
+                                ->orwhere('email', 'LIKE', '%'.$searchValue.'%');
+                })
+                ->paginate($request->paginate);
+
+        $users->appends([
+            'orderBy' => $request->orderBy,
+            'searchValue' => $request->searchValue,
+            'paginate' => $request->paginate
+        ]);
+
+        $user = Auth::user();
+
+        $user->Logs()->createMany($items = [
+                [
+                    'user_id' => $user->id,
+                    'descriptions' => 'User.View',
+                    'http_code' => '200',
+                    'action_status' => 'Success',
+                    'bookmark' => 0,
+                    'remark' => '',
+                ]
+            ]);
+
+        return response($users, 200);
     }
 }
