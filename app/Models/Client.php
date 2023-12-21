@@ -20,7 +20,7 @@ class Client extends Model
         return $this->hasMany(\App\Models\Event::class);
     }
 
-    public function ClientHasUsers()
+    public function HasUsers()
     {
         return $this->hasMany(\App\Models\client_has_users::class);
     }

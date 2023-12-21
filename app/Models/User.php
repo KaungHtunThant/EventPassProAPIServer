@@ -57,7 +57,7 @@ class User extends Authenticatable
         return $this->hasMany(\App\Models\Log::class);
     }
 
-    public function ClientHasUsers()
+    public function HasClients()
     {
         return $this->hasMany(\App\Models\client_has_users::class);
     }
