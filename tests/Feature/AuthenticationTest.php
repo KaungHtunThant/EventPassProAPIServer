@@ -56,7 +56,7 @@ class AuthenticationTest extends TestCase
         $response1 = $this->post(
             'api/login',
             [
-                'email' => 'test@mail.com',
+                'email' => 'superadmin@powerglobal.com.mm',
                 'password' => 'admin123!'
             ]
         );

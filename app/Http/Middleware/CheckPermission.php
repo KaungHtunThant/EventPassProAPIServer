@@ -30,7 +30,7 @@ class CheckPermission
                 ]
             ]);
 
-            return response('User does not have permission', 403);
+            return response('Unauthorized action.', 403);
         }
 
         return $next($request);
