@@ -14,16 +14,16 @@
 	4. Run these commands in terminal.
 	<div>
 		<code>composer install</code>
-		<br><br>
+		<br>
 		<code>php artisan migrate</code>
-		<br><br>
+		<br>
 		<code>php artisan db:seed</code>
 		<br><br>
 		(Optional: If you want to run test, run this command.)
-		<br><br>
-		<code>php artisan test</code>
 		<br>
+		<code>php artisan test</code>
 	</div>
+    <br>
 	5. Lastly, run this command to serve.
 	<div>
 		<code>php artisan serve</code>
