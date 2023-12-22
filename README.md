@@ -1,7 +1,7 @@
 # EventPassProAPIServer
 <hr />
-<h3>Developer</h3>
-<h2>Kaung Htun Thant</h2>
+<h4>Developer</h4>
+<h3>Kaung Htun Thant</h3>
 <hr />
 <h3>How to Start the Project</h3>
 <p>
@@ -14,14 +14,15 @@
 	4. Run these commands in terminal.
 	<div>
 		<code>composer install</code>
-		<br>
+		<br><br>
 		<code>php artisan migrate</code>
-		<br>
+		<br><br>
 		<code>php artisan db:seed</code>
-		<br>
+		<br><br>
 		(Optional: If you want to run test, run this command.)
-		<br>
+		<br><br>
 		<code>php artisan test</code>
+		<br>
 	</div>
 	5. Lastly, run this command to serve.
 	<div>
