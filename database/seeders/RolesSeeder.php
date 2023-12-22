@@ -18,9 +18,9 @@ class RolesSeeder extends Seeder
         $role1->givePermissionTo(Permission::all());
 
         $role2 = Role::create(['name' => 'Admin']);
-        $role1->givePermissionTo([
-            'User.Read.All',
+        $role2->givePermissionTo([
             'User.Read.Own',
+            'Log.Read.Own'
         ]);
     }
 }

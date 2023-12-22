@@ -20,5 +20,11 @@ class PermissionsSeeder extends Seeder
         Permission::create(['name' => 'User.Update.All']);
         Permission::create(['name' => 'User.Update.Own']);
         Permission::create(['name' => 'User.Delete']);
+
+        //Log
+        Permission::create(['name' => 'Log.Read.All']);
+        Permission::create(['name' => 'Log.Read.Own']);
+        Permission::create(['name' => 'Log.Update.All']);
+        Permission::create(['name' => 'Log.Update.Own']);
     }
 }
