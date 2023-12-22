@@ -127,7 +127,7 @@ class UserController extends Controller
         $user->Logs()->createMany($items = [
                 [
                     'user_id' => $user->id,
-                    'descriptions' => 'User.View',
+                    'descriptions' => 'User.Read.All',
                     'http_code' => '200',
                     'action_status' => 'Success',
                     'bookmark' => 0,

@@ -21,6 +21,17 @@ Route::post('/login', [UserController::class, 'login']);
 //Require login
 Route::middleware('auth:sanctum')->group(function() {
 
-	Route::resource('/users', UserController::class);
+	//Users
+	Route::post('/users', [UserController::class, 'store'])->middleware('permission:User.Create');
+	Route::get('/users', [UserController::class, 'index'])->middleware('permission:User.Read.All');
+	Route::get('/profile', [UserController::class, 'show'])->middleware('permission:User.Read.Own');
+	Route::patch('/users/{id}', [UserController::class, 'updateAll'])->middleware('permission:User.Update.All');
+	Route::patch('/profile', [UserController::class, 'updateOwn'])->middleware('permission:User.Update.Own');
+	Route::delete('/users/{id}', [UserController::class, 'destroy'])->middleware('permission:User.Delete');
 	
+	//Logs
+	Route::get('/logs', [LogController::class, 'index']);
+	Route::patch('/logs/{id}', [LogController::class, 'update']);
+
+	//Events
 });

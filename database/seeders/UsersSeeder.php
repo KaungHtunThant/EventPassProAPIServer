@@ -24,5 +24,7 @@ class UsersSeeder extends Seeder
             'name' => 'test',
             'email' => 'test@mail.com',
         ]);
+
+        $user1->assignRole('Admin');
     }
 }

@@ -63,13 +63,7 @@ class AuthenticationTest extends TestCase
 
         $response2 = $this->withHeader('Authorization', 'Bearer '.$response1['token'])
                     ->get(
-                        'api/users', 
-                        // [
-                        //     'name' => 'Test',
-                        //     'email' => fake()->unique()->safeEmail(),
-                        //     'password' => '12345678',
-                        //     'password_confirmation' => '12345678'
-                        // ]
+                        'api/users',
                     );
 
         $response2->assertStatus(200);
