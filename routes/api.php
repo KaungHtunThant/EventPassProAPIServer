@@ -34,5 +34,15 @@ Route::middleware('auth:sanctum')->group(function() {
 	Route::get('/logs', [LogController::class, 'index']);
 	Route::patch('/logs/{id}', [LogController::class, 'update']);
 
+	//Clients
+	Route::post('/clients', [UserController::class, 'store'])->middleware('permission:Client.Create');
+	Route::get('/clients', [UserController::class, 'index']);
+	Route::patch('/clients/{id}', [UserController::class, 'update']);
+	Route::delete('/clients/{id}', [UserController::class, 'destroy'])->middleware('permission:Client.Delete');
+
 	//Events
+	Route::post('/events', [UserController::class, 'store'])->middleware('permission:Event.Create');
+	Route::get('/events', [UserController::class, 'index']);
+	Route::patch('/events/{id}', [UserController::class, 'update']);
+	Route::delete('/events/{id}', [UserController::class, 'destroy'])->middleware('permission:Event.Delete');
 });
