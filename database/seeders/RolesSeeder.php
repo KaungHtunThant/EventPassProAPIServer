@@ -20,7 +20,12 @@ class RolesSeeder extends Seeder
         $role2 = Role::create(['name' => 'Admin']);
         $role2->givePermissionTo([
             'User.Read.Own',
-            'Log.Read.Own'
+            'Log.Read.Own',
+            'Log.Update.Own',
+            'Client.Read.Own',
+            'Client.Update.Own'
+            'Event.Read.Own',
+            'Event.Update.Own',
         ]);
     }
 }
